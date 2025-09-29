@@ -1,0 +1,217 @@
+ body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* Usaremos Arial, ya que la fuente original es más estándar */
+    margin: 0;
+    background-color: #f0f0f0; /* Fondo general */
+}
+
+h1 {
+    /* Mantenemos un solo título grande y lo centramos */
+    text-align: center;
+    color: #357bcb90; /* Celeste de Pokémon */
+    text-shadow: 1px 1px 2px #ffde00; /* Sombra amarilla */
+    font-size: 2.8em;
+    margin-bottom: 25px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1250px; /* Un poco más ancho */
+    min-height: 800px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 35px; /* Más espacio entre tarjetas */
+    margin-top: 30px;
+}
+
+/* Estilo para las tarjetas de resultado */
+.card {
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    overflow: hidden; /* Esto es clave para el diseño apilado */
+    padding: 0; /* Quitamos el padding aquí y lo ponemos dentro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Columna central (Logo) */
+.card.center {
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card.center img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Controles de búsqueda (Input/Button) */
+input, button {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 1em;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #ffde00;
+    color: #3b4cca;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #ffcb05;
+}
+
+/* ==================================== */
+/* ESTILOS ESPECÍFICOS DE LA TARJETA POKÉMON (Resultados) */
+/* ==================================== */
+
+#pokemoninfo1, #pokemoninfo2 {
+    /* Quitamos los estilos de tarjeta del contenedor principal */
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 300px; 
+}
+
+/* Contenedor principal de la información del Pokémon dentro de la card */
+.pokemon-result {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sección Superior de Color */
+.pk-header {
+    width: 100%;
+    height: 30%;
+    padding: 20px 10px;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    color: white;
+}
+
+/* Asignación de colores (Ejemplo, como en la imagen) */
+/* La imagen usa un verde agua para la izquierda y rojo/naranja para la derecha. */
+.card.left .pk-header { background-color: #48d0b2; } /* Verde agua */
+.card.right .pk-header { background-color: #ff6161; } /* Rojo */
+
+
+.pk-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.pk-id {
+    font-size: 1.2em;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.pk-img {
+    .pk-img {
+    height: 180px;
+    position: relative;
+    /* AJUSTAR ESTA LÍNEA: */
+    top: -20px; /* Cambia de -60px a -20px (o el valor que prefieras) */
+    /* Puedes probar con 0px o incluso valores positivos si quieres que baje más */
+    
+    filter: drop-shadow(0 5px 8px rgb(0, 0, 0)); 
+    display: block; 
+    margin: 0 auto; 
+}
+}
+
+/* Sección Inferior (Barras de Stats) */
+.pk-stats {
+    width: 90%;
+    padding: 10px;
+    margin-top: -60px; /* Movemos hacia arriba para llenar el vacío del header */
+    margin-bottom: 20px;
+    
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.stat-label {
+    width: 30%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.stat-bar-container {
+    width: 60%;
+    background-color: #a1a9ec;
+    border-radius: 4px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.stat-bar {
+    height: 100%;
+    background-color: #3b4cca; /* Azul de la barra */
+    transition: width 0.5s ease-in-out;
+}
+
+
+.pk-stats h2 {
+    font-size: 1.1em;
+    text-align: left;
+    width: 100%; /* Ocupa el ancho del contenedor de stats */
+    color: #333;
+    border-bottom: 1px solid #ddd; /* Separador sutil */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px; /* Ajusta el margen superior */
+}
+
+.pk-img{
+    height: 300px;
+    transition:0.4s;
+
+}
+
+.pk-img:hover{
+    transform:scale(1.2);
+}
+
+ 
